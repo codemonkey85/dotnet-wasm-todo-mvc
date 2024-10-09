@@ -16,7 +16,6 @@ Original code at: https://todomvc.com/
 
 ## How to debug with chrome dev tools
 
-- If you are on .NET 7 RC1 apply workaround below
 - Start the app with debugging enabled:
     ```
     dotnet run --debug
@@ -40,13 +39,6 @@ Original code at: https://todomvc.com/
 - In the running app browser tab add new todo item, the breakpoint should be hit
 
 *All of above would be much simpler as just "F5" in Visual Studio when we release final .NET 7*
-
-## Workaround for 7.0.0-rc1.22426.10
-Fix `C:\Program Files\dotnet\packs\Microsoft.NET.Runtime.WebAssembly.Sdk\7.0.0-rc.1.22426.10\Sdk\WasmApp.targets`
-Replace line 129 with:
-```
-<RunArguments Condition="'$(RunArguments)' == ''">exec &quot;$([MSBuild]::NormalizePath($(WasmAppHostDir), 'WasmAppHost.dll'))&quot; --runtime-config $(_AppBundleDirForRunCommand)/$(AssemblyName).runtimeconfig.json $(WasmHostArguments)</RunArguments>
-```
 
 ## How to test with Playwright
 - In first console
